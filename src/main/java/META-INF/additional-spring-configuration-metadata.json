@@ -1,0 +1,5 @@
+{"properties": [{
+  "name": "hedgeapp.encryption.key.enabled",
+  "type": "java.lang.String",
+  "description": "A description for 'hedgeapp.encryption.key.enabled'"
+}]}
