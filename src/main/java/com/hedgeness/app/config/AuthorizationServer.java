@@ -79,7 +79,7 @@ public class AuthorizationServer extends AuthorizationServerConfigurerAdapter {
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) {
        security.tokenKeyAccess("permitAll()")
-                .checkTokenAccess("isAuthenticated()").realm("WEB_APP_REALM");
+                .checkTokenAccess("permitAll()").realm("WEB_APP_REALM");
     }
 
     @Override
@@ -107,8 +107,8 @@ public class AuthorizationServer extends AuthorizationServerConfigurerAdapter {
     @Bean
     public JwtAccessTokenConverter tokenEnhancer() {
         JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
-        converter.setSigningKey(privateKey);
-        converter.setVerifierKey(publicKey);
+    //    converter.setSigningKey(privateKey);
+     //   converter.setVerifierKey(publicKey);
         return converter;
     }
 
