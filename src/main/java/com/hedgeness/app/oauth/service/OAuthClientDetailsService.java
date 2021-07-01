@@ -64,6 +64,8 @@ public class OAuthClientDetailsService implements ClientDetailsService
             baseClientDetails= new  BaseClientDetails(clientId, oauthClientDetail.getResourceIds(),
                     oauthClientDetail.getScope(), oauthClientDetail.getAuthorizeGrantType(), oauthClientDetail.getAuthorities());
             baseClientDetails.setClientSecret(oauthClientDetail.getClientSecret());
+            baseClientDetails.setAccessTokenValiditySeconds(oauthClientDetail.getAccessTokenValidity());
+            baseClientDetails.setRefreshTokenValiditySeconds(oauthClientDetail.getRefreshTokenValidity());
         }else{
             throw new ClientRegistrationException("client not registered with us");
         }
