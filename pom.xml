@@ -5,10 +5,10 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.hedgeness</groupId>
-	<artifactId>oauth2-server</artifactId>
+	<artifactId>oauth-server</artifactId>
 	<packaging>jar</packaging>
 
-	<name>oauth2-server</name>
+	<name>oauth-server</name>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
@@ -176,6 +176,6 @@
 		</plugins>
 	</build>
 
-	<description>OAuth2 Server</description>
+	<description>OAuth Server</description>
 	<version>1.0.1</version>
 </project>
