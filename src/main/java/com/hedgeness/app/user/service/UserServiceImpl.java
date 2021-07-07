@@ -127,7 +127,8 @@ public class UserServiceImpl implements UserServiceIntf,UserDetailsService {
 
             appUser.setAppUserRoles(appUserRoles);
             appUser.setAuthorities(authorities);
-
+            logger.info("loaded app user-----");
+            logger.info("appUser-->"+appUser);
             return appUser;
            
         }
