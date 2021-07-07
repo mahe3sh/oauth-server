@@ -59,12 +59,14 @@ public class UserServiceImpl implements UserServiceIntf,UserDetailsService {
     @Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException 
     {
+    	logger.info("username---->"+username);
 		AppUser appUser= appUserManagementRepoI.getUserByUserName(username);
 		if (appUser != null) 
 		{
 	 		/**
 			 * we will change logic of validating registration code
 			 * **/
+			logger.info("appUser.getRegistrationCode()--->"+appUser.getRegistrationCode());
 			if(StringUtils.isEmpty(appUser.getRegistrationCode())){
 				throw new UsernameNotFoundException(
 						"User '" + username + "' activation not found.");
@@ -75,11 +77,11 @@ public class UserServiceImpl implements UserServiceIntf,UserDetailsService {
 					(encryptionConfig.getEnabled().equalsIgnoreCase("true") || encryptionConfig.getEnabled().equalsIgnoreCase("yes"))
 			){
 				try{
-					logger.debug("username "+appUser.getEmail());
+					logger.info("username "+appUser.getEmail());
 					String activationCode=	encryptionUtil.decryptText(appUser.getRegistrationCode());
 					String[] arr=	activationCode.split("#");
 					String date=arr[arr.length-1];
-					logger.debug("expiry date"+date);
+					logger.info("expiry date"+date);
 					DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 					localDate = LocalDate.parse(date, formatter);
 				}catch (Exception ex){
@@ -95,6 +97,8 @@ public class UserServiceImpl implements UserServiceIntf,UserDetailsService {
 				throw new UsernameNotFoundException(
 						"your activation date expired");
 			}
+			
+			logger.info("get token using user----->");
 
 			appUser.setSuperAdmin(false);
 			appUser.setOrgAdmin(false);
