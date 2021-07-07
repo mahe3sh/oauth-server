@@ -28,7 +28,7 @@ public class OauthClientDetailServiceImpl implements OauthClientDetailServiceInt
 
         BaseClientDetails baseClientDetails =null;
         if(oauthClientDetail!=null){
-           // System.out.println("baseClientDetails::"+oauthClientDetail);
+           // logger.info("baseClientDetails::"+oauthClientDetail);
             baseClientDetails= new  BaseClientDetails(clientId, oauthClientDetail.getResourceIds(),
                     oauthClientDetail.getScope(), oauthClientDetail.getAuthorizeGrantType(), oauthClientDetail.getAuthorities());
             baseClientDetails.setClientSecret(oauthClientDetail.getClientSecret());
